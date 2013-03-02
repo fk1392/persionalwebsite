@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+body{
+	margin: 20px auto;
+	width: 960px;
+	background-color: #f5f5f5;
+	font-size: 13px;
+	font-family: :"Panic Sans", "Menlo", "DejaVu Sans Mono", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+}
+
+a{
+	color: #666;
+	text-decoration: none;
+}
+
+.blog{
+	border: 1px solid #cccccc;
+	border-radius: 2px 2px 2px 2px;
+	box-shadow: 2px 2px 5px #cccccc;
+	float:left;
+	padding: 20px;
+	margin-bottom: 15px;
+	width: 68%;
+}
+
+.blog .image{
+  float:left;
+  border-top: 0 none;
+  clear: both;
+  line-height:1.7em;
+  padding: 0px 10px 3px 0px;
+}
+
+.blog .index .title{
+	font-size: 30px;
+}
+
+.blog .index .date{
+	font-size: 11px;
+	color: #bbbbbb;
+	font-weight: normal;
+	line-height: 1.5em;
+}
+
+.btn {
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 4px 12px;
+  border-radius: 3px;
+  border: 1px solid #d4d4d4;
+  border-bottom-color: #BCBCBC;
+  background-color: #fafafa;
+  background-image: -webkit-linear-gradient(top, #fafafa, #eaeaea);
+  background-image: -moz-linear-gradient(top, #fafafa, #eaeaea);
+  background-repeat: repeat-x;
+  text-shadow: 1px 1px 0 white;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  -webkit-transition: background-image 0.5s ease-in;
+  cursor: pointer;
+}
+
+.btn:hover, .btn:active {
+  background-image: -moz-linear-gradient(#599BDC, #3072b3);
+  background-image: -webkit-linear-gradient(#599BDC, #3072b3);
+  border-color: #518cc6 #518cc6 #2A65A0;
+  color: white;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.control-group{
+    margin-left: 20px;
+}
+
+.technology{
+  position:fixed;
+  top:100px;
+  left:0;
+  width:100px;
+  background-color:#ffffff;
+  height:22px;
+}
+
+.pages{
+  float:left;
+  text-align: right;
+  padding: 22px;
+  margin-bottom: 15px;
+  width: 68%;
+  font-size: 15px;
+}
+
+#pagebutton{
+  border: 1px solid #cccccc;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 2px 2px 5px #cccccc;  
+}
+
+h1 .title {
+  font-size: 120%;
+  margin-left: 30px;
+}
+
+.post_content {
+  border-top: 1px solid #ddd;
+  padding: 10px 25px 0 30px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 150%;
+}
+#content {
+  float: left;
+  width: 72%;
+}
+
+#sidebar {
+  float: right;
+  width: 26%;
+}
+
+#box{
+  border: 1px solid #cccccc;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 2px 2px 5px #cccccc;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+.group{ zoom: 1 }
+
+.catalog{
+  padding:0px;
+}

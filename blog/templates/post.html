@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog">
+	<h1><div class="title">{{ blog.title }}</div></h1>
+	<div class="post_content">
+        <div class="content">
+
+    {{ blog.content|safe }}
+</div>
+</div>
+</div>
+
+
+
+<div class="blog">
+
+    <!-- Duoshuo Comment BEGIN -->
+        <div class="ds-thread"></div>
+            <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"xmytest"};
+                        (function() {
+                                    var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';ds.async = true;
+                                                    ds.src = 'http://static.duoshuo.com/embed.js';
+                                                            ds.charset = 'UTF-8';
+                                                                    (document.getElementsByTagName('head')[0] 
+                                                                            || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                                                                })();
+                                                                                    </script>
+                                                                                    <!-- Duoshuo Comment END -->
+</div>
+{% endblock %}

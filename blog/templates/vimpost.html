@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog">
+<form method="post" action="{{ url_for('blog.vimpost',pid = blog.pid) }}">
+	<p>
+		<label for="title">标题</label>
+		<input type="text" id="title" name="title" value="{{ blog.title }}" size="30">
+	</p>
+	<p>
+		<label for="image">图片</label>
+		<input type="text" id="image" name="image" value="{{ blog.image }}" size="30">
+        </p>
+        <p>
+        <label for="catalog">目录</label>
+        <input type="text" id="catalog" name="catalog" value="{{ blog.catalog }}" size="30">
+    </p>
+	<p>
+		<label for="date">时间</label>
+		<input type="text" id="date" name="date" value="{{ blog.date }}" size="30">
+	</p>
+    <p>
+    <label>是否公开</label>
+    <select name="visual">
+        <option {% if blog.visual == 0 %}selected{% endif %} value=0>公开</option>
+        <option {% if blog.visual == 1 %}selected{% endif %} value=1>隐私</option>
+    </select>
+    </p>
+    <p>
+    <label>技术类</label>
+    <select name="technology">
+        <option value=0>是</option>
+        <option value=1>非</value>
+    </select>
+    </p>
+	<p>
+		<label for="content">正文</label>
+	</p>
+		<textarea id="content" name="content" rows="25" cols="80">{{ blog.origin_content }}</textarea>
+
+	<p>
+		<button id="submit" class="btn" type="submit">提交</button>
+	</p>
+</form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+$(function(){
+	$("#date").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat:"yy-mm-dd"
+	});
+});
+</script>
+{% endblock %}
