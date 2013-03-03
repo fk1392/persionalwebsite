@@ -201,12 +201,12 @@ def bloglogout():
 # 数据库安装
 @blog.route("/install")
 def bloginstall():
-    try:
-        if "username" not in session or "password" not in session:
-            raise
-        Base.metadata.create_all(engine)
-    except:
-        return render_template("message.html",title = 500,config = config, message = u"数据库创建失败，原因未知")
+    #try:
+    #    if "username" not in session or "password" not in session:
+    #        raise
+    Base.metadata.create_all(engine)
+    #except:
+    #    return render_template("message.html",title = 500,config = config, message = u"数据库创建失败，原因未知")
     return render_template("message.html" ,config = config, message = u"数据库部署完成,你不需要运行2次")
 
 @blog.errorhandler(404)

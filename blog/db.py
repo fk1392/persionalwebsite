@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy import create_engine, Column, String, Integer,Text
 from sqlalchemy.orm import sessionmaker, scoped_session
 import blogsettings as config
 import uuid
@@ -16,13 +16,13 @@ class Blog(Base):
     __tablename__ = "blogs"
 
     id = Column(Integer, primary_key = True)
-    pid = Column(String)
-    image = Column(String)
-    title = Column(String)
+    pid = Column(Text)
+    image = Column(Text)
+    title = Column(Text)
     date = Column(Integer)
-    catalog = Column(String)
-    origin_content = Column(String)
-    content = Column(String)
+    catalog = Column(Text)
+    origin_content = Column(Text)
+    content = Column(Text)
     # viusal 0表示可见 1表示不可见 默认可见
     visual = Column(Integer)
     # technology 0表示技术博客 1表示非技术博客 默认技术
