@@ -46,16 +46,58 @@ def blogindex(page):
 
     return render_template("index.html", blogs = blogs, config = config,page = page, page_count = page_count, catalog = catalog)
 
+# catalog展示
+@blog.route("/catalog/<argument>",defaults = {"page":1})
+@blog.route("/catalog/<argument>/<page>")
+def showcatalog(argument,page):
+    try:
+        page = int(page)
+    except:
+        page = 1
+    if page <= 0:
+        abort(404)
+    s = Session()
+    blogs = s.query(Blog).order_by(desc(Blog.date))
+    try:
+        if session["username"] != config.username or session["password"] != config.password:
+            raise
+    except:
+        blogs = blogs.filter(Blog.visual == 0)
+    catalog = {}
+    for i in blogs:
+        if i.catalog in catalog:
+            catalog[i.catalog].append(i)
+        else:
+            catalog[i.catalog] = [i,]
+    blogs = blogs.filter(Blog.catalog == argument)
+    blog_count = blogs.count()
+    page_count = (blog_count + config.blog_per_page - 1) / config.blog_per_page
+    blogs = blogs.offset((page - 1) * config.blog_per_page).limit(config.blog_per_page)
+    
+    return render_template("catalog.html", blogs = blogs,title = argument, config = config,page = page, page_count = page_count, catalog = catalog,cat = argument)
+
 
 # 博客展示
 @blog.route("/post/<pid>")
 def showpost(pid):
     s = Session()
+    blogs = s.query(Blog).order_by(desc(Blog.date))
+    try:
+        if session["username"] != config.username or session["password"] != config.password:
+            raise
+    except:
+        blogs = blogs.filter(Blog.visual == 0)
+    catalog = {}
+    for i in blogs:
+        if i.catalog in catalog:
+            catalog[i.catalog].append(i)
+        else:
+            catalog[i.catalog] = [i,]
     try:
         blog = s.query(Blog).filter_by(pid = pid).first()
     except:
         abort(404)
-    return render_template("post.html",config = config ,blog = blog)
+    return render_template("post.html",config = config ,blog = blog,catalog = catalog,title = blog.title)
 
 
 # 增加文章
@@ -164,12 +206,6 @@ def bloginstall():
     except:
         return render_template("message.html",title = 500,config = config, message = u"数据库创建失败，原因未知")
     return render_template("message.html" ,config = config, message = u"数据库部署完成,你不需要运行2次")
-
-
-@blog.route("/catalog/<catalog>")
-def showcatalog(catalog):
-    return "aok"
-
 
 
 @blog.errorhandler(404)

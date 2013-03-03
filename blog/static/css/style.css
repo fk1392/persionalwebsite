@@ -122,14 +122,29 @@ h1 .title {
 }
 
 #box{
+  position: fixed;
   border: 1px solid #cccccc;
   border-radius: 2px 2px 2px 2px;
   box-shadow: 2px 2px 5px #cccccc;
   padding: 20px;
   margin-bottom: 15px;
+  width: 15%;
 }
 .group{ zoom: 1 }
 
 .catalog{
-  padding:0px;
+    border-top: 1em;
+    padding:0px 0px 5px 0px;
+}
+
+.cat-item{
+  background: url("/blog/static/img/sidebar-mini.gif") no-repeat scroll 0 0 transparent;
+  list-style-type:none;
+  padding-left:20px;
+}
+
+.clock{
+    position: fixed;
+    top:10px;
+    left:10px;
 }

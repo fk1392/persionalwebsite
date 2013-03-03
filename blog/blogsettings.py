@@ -4,6 +4,6 @@
 site_title = u"樱宝宝のblog"
 engine_string = "sqlite:///i.db"
 debug = False
-blog_per_page = 1
+blog_per_page = 8
 username = "xuanmingyi"
 password = "joyceandy098816"

@@ -15,18 +15,19 @@ document.write(form_content);
 </script>
 </div>
 
+
 <div id="sidebar">
 <div id="box">
     <ul class="catalog">
         {% for i in catalog %}
-            <li class="cat-item"><a href="/blog/catalog/{{ i }}">{{ i }}</a></li>
+            <li class="cat-item"><a href="{{ url_for('blog.showcatalog',argument = i) }}">{{ i }}</a></li>
         {% endfor %}
     </ul>
 </div>
 </div>
 {% for blog in blogs %}
     <div class="blog">
-        <!-- <a href="{{ url_for('blog.showpost', pid = blog.pid) }}"><div class="image"><img width="300px" src="{{ blog.image }}"></div></a> -->
+        <!--<a href="{{ url_for('blog.showpost', pid = blog.pid) }}"><div class="image"><img width="300px" src="{{ blog.image }}"></div></a>-->
         <div class="index">
             <a href="{{ url_for('blog.showpost', pid = blog.pid ) }}"><div class="title">{{ blog.title }}</div></a>
             {% if "username" in session %}
@@ -40,7 +41,7 @@ document.write(form_content);
 {% endfor %}
 
     <div class="pages">
-    <a id="pagebutton" href="/blog/1">首页</a>
+    <a id="pagebutton" href="/blog/catalog/{{ cat }}/1">首页</a>
     {% if 1 < page - 2 %}
     ...
     {% endif %}
@@ -49,24 +50,30 @@ document.write(form_content);
     {% if (page + i ) <= 0 %}
     {% elif (page + i) > page_count %}
     {% elif i == 0 %}
-        <a id="activepagebutton" href="/blog/{{ page }}">{{ page }}</a>
+        <a id="activepagebutton" href="/blog/catalog/{{ cat }}/{{ page }}">{{ page }}</a>
     {% else %}
-        <a id="pagebutton" href="/blog/{{ page + i}}">{{page + i}}</a>
+        <a id="pagebutton" href="/blog/catalog/{{ cat }}/{{ page + i}}">{{page + i}}</a>
     {% endif %}
     {% endfor %}
     {% endif %}
     {% if page_count > page + 2 %}
     ...
     {% endif %}
-    <a id="pagebutton" href="/blog/{{page_count}}">末页</a>
+    <a id="pagebutton" href="/blog/catalog/{{ cat }}/{{page_count}}">末页</a>
 </div>
 
 {% endblock %}
 
 {% block js %}
 <script lang="javascript">
-$(function() {
-    $( ".clock" ).draggable();
-});
+    $("#accordion").accordion({
+        header: ">div > h3"
+    }).sortable({
+        axis:"y",
+        handle: "h3",
+        stop: function(event,ui){
+            ui.item.children("h3").trigerHandler("focusout");
+        }
+    });
 </script>
 {% endblock %}

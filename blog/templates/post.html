@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="clock">
+<script lang="javascript">
+var form_content = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="150" height="136.363636364" id="clock_widget" align="middle"><param name="allowScriptAccess" value="always" /><param name="movie" value="http://localtimes.info/swf/post-it_time.swf" /><param name="menu" value="false" /><param name="quality" value="high" /><param name="scale" value="exactfit" /><param name="wmode" value="transparent" /><param name="FlashVars" value="UTCtime=8&ghb=0&colourScheme=&colourWidget=FFFFFF&colourTime=000000"><param name="bgcolor" value="#ffffff" /><embed src="http://localtimes.info/swf/post-it_time.swf" FlashVars="UTCtime=8&ghb=0&colourScheme=&colourWidget=FFFFFF&colourTime=000000" menu="false" wmode="transparent" quality="high" scale="exactfit" bgcolor="#ffffff" width="150" height="136.363636364" name="clock_widget" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /></object>';
+document.write(form_content);
+</script>
+</div>
+
+<div id="sidebar">
+<div id="box">
+    <ul class="catalog">
+        {% for i in catalog %}
+            <li class="cat-item"><a href="/blog/catalog/{{ i }}">{{ i }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+
+
 <div class="blog">
 	<h1><div class="title">{{ blog.title }}</div></h1>
 	<div class="post_content">
