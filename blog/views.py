@@ -71,6 +71,8 @@ def showcatalog(argument,page):
             catalog[i.catalog] = [i,]
     blogs = blogs.filter(Blog.catalog == argument)
     blog_count = blogs.count()
+    if blog_count == 1:
+        return redirect(url_for("blog.showpost",pid = blogs.first().pid))
     page_count = (blog_count + config.blog_per_page - 1) / config.blog_per_page
     blogs = blogs.offset((page - 1) * config.blog_per_page).limit(config.blog_per_page)
     
@@ -206,7 +208,6 @@ def bloginstall():
     except:
         return render_template("message.html",title = 500,config = config, message = u"数据库创建失败，原因未知")
     return render_template("message.html" ,config = config, message = u"数据库部署完成,你不需要运行2次")
-
 
 @blog.errorhandler(404)
 def hander404(error):
